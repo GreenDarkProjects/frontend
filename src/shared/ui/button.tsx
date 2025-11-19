@@ -5,7 +5,8 @@ import { ButtonProps } from "../types"
 export const Button = ({
     children,
     className="",
-    onClick
+    onClick,
+    variants="green"
 }: ButtonProps) => {
     return (
         <button
@@ -13,7 +14,7 @@ export const Button = ({
                 p-3 
                 text-black font-bold text-[16px] 
                 rounded-full
-                bg-accent
+                ${variants === "green" ? 'bg-accent' : 'bg-red-500 text-white'}
                 ${className}
             `}
             onClick={onClick}

@@ -1,1 +1,1 @@
-export type AuthPageType = 'login' | 'reg';
+export type AuthPageType = 'login' | 'reg' | 'reset-password' | 'code';

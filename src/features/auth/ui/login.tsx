@@ -65,8 +65,8 @@ export const Login = ({
                 </ChangePageButton>
 
                 <ChangePageButton 
-                    onClick={(p) => console.log(p)}
-                    page="reg"
+                    onClick={(p) => onNavigate(p)}
+                    page="reset-password"
                 >
                     Забыли пароль?
                 </ChangePageButton>
