@@ -13,7 +13,7 @@ export const BottomMenu = () => {
 
     return (
         <div className="
-            absolute bottom-16 
+            fixed bottom-4
             left-[38px] right-[38px]
             rounded-full bg-[#EAEAEA] 
             shadow-[0_12px_24px_-6px_#98d675] 

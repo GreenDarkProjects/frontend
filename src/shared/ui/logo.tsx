@@ -2,7 +2,7 @@ import Image from 'next/image';
 
 export const Logo = () => {
     return (
-        <div className="h-[225px] shrink-0 relative">
+        <div className="h-[20vh] shrink-0 relative">
             <Image 
                 src="logo.png"
                 alt="logo"

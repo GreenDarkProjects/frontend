@@ -21,7 +21,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${inter.variable} antialiased px-[38px] py-16 h-screen`}
+        className={`${inter.variable} antialiased px-[38px] py-10 h-screen`}
       >
         {children}
         <BottomMenu />
