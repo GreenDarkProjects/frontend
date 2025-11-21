@@ -21,7 +21,7 @@ export const NAV_ITEMS: NavCardProps[] = [
     {
         icon: TechIcon,
         text: 'Техническая поддержка',
-        href: 't.me'
+        href: 'http://t.me/TundaAndrey'
     },
     {
         icon: ReviewsIcon,

@@ -1,5 +1,4 @@
-import React from "react";
-import { IOrder } from "../types";
+import { IOrder } from "../../../widgets/order-history/types";
 
 export const OrderCard = ({
     address,

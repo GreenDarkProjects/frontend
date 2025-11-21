@@ -7,7 +7,7 @@ import 'swiper/css';
 import 'swiper/css/free-mode';
 
 import { ORDER_ITEMS } from "../config/order-items"
-import { OrderCard } from "./order-card"
+import { OrderCard } from "@/entities/orders/ui/order-card";
 
 export const OrderHistory = () => {
     return (

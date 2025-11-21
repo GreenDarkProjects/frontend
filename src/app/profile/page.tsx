@@ -1,5 +1,6 @@
 'use client'
 
+import { Logout } from '@/features/logout'
 import { UpdateProfile } from '@/features/update-profile'
 import { Button, Titles } from '@/shared'
 import { OrderHistory } from '@/widgets/order-history'
@@ -7,7 +8,7 @@ import Link from 'next/link'
 
 export default function Page() {
     return (
-        <div>
+        <div className='pb-24'>
             <Titles center className='mb-4.5'>Профиль</Titles>
             <OrderHistory />
             <UpdateProfile />
@@ -24,9 +25,7 @@ export default function Page() {
                 </Link>
             </Button>
 
-            <Button variants='red' onClick={() => console.log()} className='w-full'>
-                Выйти
-            </Button>
+            <Logout />
         </div>
     )
 }
