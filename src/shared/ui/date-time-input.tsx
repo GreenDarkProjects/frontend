@@ -1,43 +1,30 @@
 'use client'
 
-import { ChangeEvent, KeyboardEvent } from "react"
+import { IMaskInput } from "react-imask"
+import IMask from "imask"
 import { InputProps } from "../types"
 
-export const Input = ({
+export const DateTimeInput = ({
     value,
     onChange,
     placeholder,
-    type = "text",
     error
 }: InputProps) => {
-    const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
-        if (type === 'number') {
-            const allowedKeys = ['Backspace', 'Delete', 'Tab', 'Escape', 'Enter', 'ArrowLeft', 'ArrowRight', 'Home', 'End']
-            
-            if (allowedKeys.includes(e.key) || e.ctrlKey || e.metaKey) {
-                return
-            }
-
-            if (!/[0-9]/.test(e.key)) {
-                e.preventDefault()
-            }
-        }
-    }
-
-    const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-        if (type === 'number') {
-            e.target.value = e.target.value.replace(/[^0-9]/g, '')
-        }
-        onChange(e)
-    }
-
     return (
         <div className="relative w-full">
-            <input
-                type={type === 'number' ? 'tel' : type}
-                value={value}
-                onChange={handleChange}
-                onKeyDown={handleKeyDown}
+            <IMaskInput
+                mask="d.m.Y H:M"
+                blocks={{
+                    d: { mask: IMask.MaskedRange, from: 1, to: 31, maxLength: 2 },
+                    m: { mask: IMask.MaskedRange, from: 1, to: 12, maxLength: 2 },
+                    Y: { mask: IMask.MaskedRange, from: 2024, to: 2035, maxLength: 4 },
+                    H: { mask: IMask.MaskedRange, from: 0, to: 23, maxLength: 2 },
+                    M: { mask: IMask.MaskedRange, from: 0, to: 59, maxLength: 2 }
+                }}
+                lazy={false}
+                value={String(value || '')}
+                unmask={false}
+                onAccept={(value: string) => onChange({ target: { value } } as any)}
                 placeholder=" "
                 className={`
                     peer

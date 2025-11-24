@@ -1,0 +1,1 @@
+export const INIT_TOTAL_COST = 90;
