@@ -25,7 +25,7 @@ export const ResetPassword = ({
         onNavigate('code');
     }
     return (
-        <div className="w-full h-full flex flex-col">
+        <div className="w-full flex flex-col">
             <Titles center className="mb-6">
                 Сброс пароля
             </Titles>
@@ -108,7 +108,7 @@ export const ResetPassword = ({
             </div>
 
             <Button 
-                className="w-full mt-auto"
+                className="w-full mt-10"
                 onClick={handleSubmit(onSubmit)}
             >
                 Восстановить пароль

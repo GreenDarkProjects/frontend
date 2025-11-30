@@ -22,7 +22,7 @@ export const AddOrder = () => {
             dateAndTime: '',
             amountOfGarage: 1,
             payment: 'cash',
-            comment: undefined
+            comment: null
         }
     })
 

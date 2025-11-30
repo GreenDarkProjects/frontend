@@ -10,12 +10,20 @@ import { CodePage } from "./code"
 
 export const Auth = () => {
     const [page, setPage] = useState<AuthPageType>('login');
+    const [codeType, setCodeType] = useState<'reset' | 'submit'>('submit');
+
+    const handleNavigate = (newPage: AuthPageType, type?: 'reset' | 'submit') => {
+        if (type) {
+            setCodeType(type);
+        }
+        setPage(newPage);
+    };
 
     const pages: Record<AuthPageType, React.ReactNode> = {
-        'login': <Login onNavigate={setPage} />,
-        'reg': <Registration onNavigate={setPage} />,
-        'reset-password': <ResetPassword onNavigate={setPage} />,
-        'code': <CodePage type="reset" onNavigate={setPage}/>
+        'login': <Login onNavigate={handleNavigate} />,
+        'reg': <Registration onNavigate={handleNavigate} />,
+        'reset-password': <ResetPassword onNavigate={handleNavigate} />,
+        'code': <CodePage type={codeType} onNavigate={handleNavigate} />
     }
 
     return (
@@ -26,4 +34,4 @@ export const Auth = () => {
             </div>
         </section>
     )
-} 
+}

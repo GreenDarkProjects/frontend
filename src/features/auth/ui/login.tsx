@@ -24,7 +24,7 @@ export const Login = ({
     }
 
     return (
-        <div className="w-full h-full flex flex-col">
+        <div className="w-full flex flex-col">
             <Titles center className="mb-6">Войти</Titles>
             <form className="grid grid-cols-1 gap-3 mb-2.5">
                 <Controller
@@ -73,7 +73,7 @@ export const Login = ({
             </div>
 
             <Button 
-                className="w-full mt-auto"
+                className="w-full mt-10"
                 onClick={handleSubmit(onSubmit)}
             >
                 Войти

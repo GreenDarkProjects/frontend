@@ -21,7 +21,7 @@ export const CodePage = ({
     }
 
     return (
-        <div className="w-full h-full flex flex-col px-4 pb-6">
+        <div className="w-full flex flex-col px-4 pb-6">
             <Titles center className="mb-6">
                 Введите код для {type === 'reset' ? 'сброса пароля' : 'подтверждения почты'}
             </Titles>
@@ -55,7 +55,7 @@ export const CodePage = ({
                 </div>
 
                 <Button 
-                    className="mt-auto w-full"
+                    className="mt-10 w-full"
                     onClick={handleSubmit(onSubmit)}
                 >
                     Подтвердить

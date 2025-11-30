@@ -1,13 +1,18 @@
 'use client'
 
-import { Button, Input, Titles } from "@/shared"
+import { Button, ErrorMessage, ErrorType, extractError, Input, Titles } from "@/shared"
 import { AuthStepProps, RegForm } from "../types"
 import { Controller, SubmitHandler, useForm } from "react-hook-form"
 import { ChangePageButton } from "./change-page-button"
+import { useState } from "react"
+import { reg } from "../api"
 
 export const Registration = ({
     onNavigate
 }: AuthStepProps) => {
+    const [isLoading, setIsLoading] = useState(false);
+    const [serverError, setServerError] = useState('');
+
     const {
         control,
         handleSubmit,
@@ -25,15 +30,41 @@ export const Registration = ({
 
     const password = watch('password');
 
-    const onSubmit: SubmitHandler<RegForm> = (data) => {
-        console.log(data);
+    const onSubmit: SubmitHandler<RegForm> = async (data) => {
+        try {
+            setIsLoading(true);
+            setServerError('');
+
+            console.log(data);
+
+            const { secondPassword, ...requestData } = data;
+
+            await reg(requestData);
+
+            onNavigate('code', 'submit');
+        } catch(e: unknown) {
+            const message = extractError(e as ErrorType);
+
+            setServerError(message);
+        } finally {
+            setIsLoading(false)
+        }
     }
 
     return (
-        <div className="w-full h-full flex flex-col">
+        <div className="w-full flex flex-col">
             <Titles center className="mb-6">
                 Регистрация
             </Titles>
+
+            {
+                serverError != '' && (
+                    <div className="mb-4 min-h-5"> 
+                        <ErrorMessage message={serverError} />
+                    </div>
+                )
+            }
+            
             
             <form className="grid grid-cols-1 gap-3 mb-2.5">
                 <Controller 
@@ -162,8 +193,9 @@ export const Registration = ({
             </div>
 
             <Button 
-                className="w-full mt-auto"
+                className="w-full mt-10"
                 onClick={handleSubmit(onSubmit)}
+                isLoading={isLoading}
             >
                 Зарегистрироваться
             </Button>

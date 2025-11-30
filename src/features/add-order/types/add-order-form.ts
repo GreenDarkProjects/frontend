@@ -6,5 +6,5 @@ export interface AddOrderForm {
     dateAndTime: string;
     amountOfGarage: number;
     payment: string;
-    comment?: string;
+    comment: string | null;
 };

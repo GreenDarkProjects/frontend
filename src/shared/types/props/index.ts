@@ -3,3 +3,4 @@ export * from './button-props';
 export * from './input-props';
 export * from './loader-props';
 export * from './select-props';
+export * from './error-message-props';
